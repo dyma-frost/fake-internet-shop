@@ -1,41 +1,45 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-// const h1 = React.createElement('h1', { id: 'title' }, 'Hello React')
-// console.log(h1)
+//React component
 
-//jsx
-const h1 = (
-    <h1 id="title" className="olwaysInCamelCase">
-        Hello React.js
-    </h1>
-)
+const Title = () => {
+    return <h1>Helo App.js</h1>
+}
 
-// const list = React.createElement(
-//     'ul',
-//     null,
-//     React.createElement('li', null, 'listitem1'),
-//     React.createElement('li', null, 'listitem2'),
-//     React.createElement('li', null, 'listitem3')
-// )
+const Content = () => {
+    return (
+        <React.Fragment>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam
+                nobis voluptatibus maxime, praesentium deserunt esse id a
+                reiciendis nemo rem ab atque, molestiae at itaque delectus
+                tenetur. Quam, unde saepe.
+            </p>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam
+                nobis voluptatibus maxime, praesentium deserunt esse id a
+                reiciendis nemo rem ab atque, molestiae at itaque delectus
+                tenetur. Quam, unde saepe.
+            </p>
+        </React.Fragment>
+    )
+}
 
-let a = 10
-let b = 'Hello test'
+//component name OlwaysInPaskalCase
 
-const list = (
-    <ul>
-        <li>listitem1 {a + 10 + 10}</li>
-        <li>listitem2 {b}</li>
-        <li>listitem3</li>
-    </ul>
-)
-
-const content = (
-    <div>
-        {h1}
-        {list}
-    </div>
-)
+function App() {
+    return (
+        <>
+            <Title />
+            <Content />
+        </>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(<React.StrictMode>{content}</React.StrictMode>)
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+)
