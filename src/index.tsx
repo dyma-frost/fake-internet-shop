@@ -5,7 +5,11 @@ import ReactDOM from 'react-dom/client'
 // console.log(h1)
 
 //jsx
-const h1 = <h1 id="title">Hello React.js</h1>
+const h1 = (
+    <h1 id="title" className="olwaysInCamelCase">
+        Hello React.js
+    </h1>
+)
 
 // const list = React.createElement(
 //     'ul',
@@ -15,14 +19,16 @@ const h1 = <h1 id="title">Hello React.js</h1>
 //     React.createElement('li', null, 'listitem3')
 // )
 
+let a = 10
+let b = 'Hello test'
+
 const list = (
     <ul>
-        <li>listitem1</li>
-        <li>listitem2</li>
+        <li>listitem1 {a + 10 + 10}</li>
+        <li>listitem2 {b}</li>
         <li>listitem3</li>
     </ul>
 )
-
 
 const content = (
     <div>
