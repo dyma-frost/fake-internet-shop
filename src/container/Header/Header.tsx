@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Container } from '@mui/system'
 import Logo from 'components/Logo/Logo'
 import Menu from 'components/Menu/Menu'
+import CartHeader from 'components/CartHeader/CartHeader'
 
 import './Header.scss'
 
@@ -24,8 +25,8 @@ const Header = (props: Props) => {
                         <MenuIcon />
                     </IconButton>
                     <Logo />
-                    <Menu/>
-                    
+                    <Menu />
+                    <CartHeader />
                 </Toolbar>
             </Container>
         </AppBar>
