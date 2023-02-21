@@ -33,6 +33,7 @@ const ProductsListItem = ({
 
     const onDecrement = () => {
         setCount(count - 1)
+
     }
 
 
@@ -48,7 +49,11 @@ const ProductsListItem = ({
                 <div className="product-features">Capacity: {capacity} GB</div>
                 <div className="product-price">{price}$</div>
                 <div className="product-quantity">
-                    <Button variant="outlined" onClick={() => onDecrement()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onDecrement()}
+                        disabled={count <= 1}
+                    >
                         -
                     </Button>
                     <TextField size="small" value={count} />
