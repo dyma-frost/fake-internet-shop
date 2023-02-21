@@ -35,7 +35,6 @@ const ProductsListItem = ({
         setCount(count - 1)
     }
 
-
     return (
         <Card variant="outlined" className="product">
             <CardContent>
