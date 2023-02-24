@@ -33,9 +33,7 @@ const ProductsListItem = ({
 
     const onDecrement = () => {
         setCount(count - 1)
-
     }
-
 
     return (
         <Card variant="outlined" className="product">
@@ -57,7 +55,11 @@ const ProductsListItem = ({
                         -
                     </Button>
                     <TextField size="small" value={count} />
-                    <Button variant="outlined" onClick={() => onIncrement()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onIncrement()}
+                        disabled={count >= 10}
+                    >
                         +
                     </Button>
                 </div>
