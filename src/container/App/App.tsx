@@ -31,6 +31,13 @@ const App = (props: Props) => {
         setProductsInCart((prevState) => omit(prevState, [id]))
     }
 
+    const changeProductsQuantity = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: count,
+        }))
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
@@ -51,6 +58,7 @@ const App = (props: Props) => {
                             <CartPage
                                 productsInCart={productsInCart}
                                 removeProductFromCart={removeProductFromCart}
+                                changeProductsQuantity={changeProductsQuantity}
                             />
                         }
                     />
