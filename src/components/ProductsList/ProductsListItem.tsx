@@ -1,15 +1,12 @@
-import {
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-} from '@mui/material'
+import { Button, Card, CardActions, CardContent } from '@mui/material'
 import Quantity from 'components/Quantity/Quantity'
 import { useState } from 'react'
 import './ProductsListItem.scss'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { useAppSelector } from 'redux/hooks'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { addLike, removeLike } from 'redux/likeReducer'
+import { addProductToCart } from 'redux/cartReduser'
 
 type Props = {
     id: number
@@ -19,7 +16,7 @@ type Props = {
     capacity: string
     price: number
     image: string
-    addProductToCart: (count: number, price: number) => void
+    addProductToCart?: (count: number, price: number) => void
 }
 
 const ProductsListItem = ({
@@ -30,7 +27,6 @@ const ProductsListItem = ({
     capacity,
     price,
     image,
-    addProductToCart,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
 
@@ -42,10 +38,19 @@ const ProductsListItem = ({
         setCount((prevState) => prevState - 1)
     }
     const isLiked = useAppSelector((state) => state.productsLikeState[id])
+    const dispatch = useAppDispatch()
+
     return (
         <Card variant="outlined" className="product">
             <CardContent>
-                <Button variant="outlined">
+                <Button
+                    variant="outlined"
+                    onClick={() =>
+                        isLiked
+                            ? dispatch(removeLike(id))
+                            : dispatch(addLike(id))
+                    }
+                >
                     {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </Button>
                 <div className="product-image">
@@ -65,7 +70,14 @@ const ProductsListItem = ({
             <CardActions className="product-btn-wrap">
                 <Button
                     variant="outlined"
-                    onClick={() => addProductToCart(id, count)}
+                    onClick={() =>
+                        dispatch(
+                            addProductToCart({
+                                id,
+                                count,
+                            })
+                        )
+                    }
                 >
                     Add to cart
                 </Button>
